@@ -1,0 +1,23 @@
+git init 建立資料庫
+git remote add (遠端資料庫名稱) (.git url) ex. git remote origin http://xxxxxxxxxxxx.git
+git push -u origin master => 把本地master推送至git master
+git add . 加入所有檔案至待推送狀態
+git status 查看目前狀態
+git log 查看紀錄 (q離開)
+git commit -m "(要推送的內容)"
+git commit -am "(要推送的內容)"  (等同於add + commit，但若有新增檔案則無法使用，需先手動執行 git add .)
+git checkout (版本號) => 切換至指定版本
+touch (想建立檔案名稱) => 在資料夾內建立新檔案 ex. touch .gitignore
+git branch (想建立分支名稱) => 建立新分支
+git branch -d (想刪除分支名稱) => 刪除指定分支
+git checkout (branch名稱) => 切換至指定branch
+git branch -v 查看所有分支
+git merge (想合併進來分支) => 合併指定分支至當前分支 ex. (現在在master，要合併另個分支master2進來) git merge master2
+git push origin (分支名稱) => 將本地分支推送至git
+git pull origin (分支名稱) => 將git分支拉至本地
+git clone (.git url) => 把git資料庫檔案複製到本地
+
+------ 名詞介紹 -----
+fork => 把他人資料庫複製一份至自己的
+pull request => 請求把自己的分支與他人的合併 (等同於在遠端做merge指令)
+貢獻開發原始碼 => 將他人資料庫fork至自己資料庫，編輯完成後push至自己資料庫再對他人資料庫發送pull request請求合併

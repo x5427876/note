@@ -1,0 +1,42 @@
+Class 內建立 constructor 需先super() 以呼叫react constructor
+
+props => 別人傳給你的屬性
+state =>自己擁有的屬性
+
+state只要改變就會觸發render()
+
+子要改父state => 父宣告func並在render()內傳func給子，子透過props取得func進行更改父state，觸發父render()，再觸發子render()
+只有component可以改自己state，要改他人state需靠他人提供方法改
+
+styled component => npm 套件，可設定component css屬性及名稱，react可直接使用該名稱作為component名稱
+
+每次建立class constructor 最好都要設傳入參數props=>
+
+class App extends Component {
+  constructor(props) {
+    super(props)
+
+才為初始化標準流程，能將bug降至最低 未傳props為undefined
+
+shouldComponentUpdate(nextProps, nextState) => 可決定是否每次state改變就重新執行render()，不建議做太複雜判斷，否則比render()時間還久 / 也同時可決定是否call componentDidUpdate函數
+nextProps 傳入下一個props 參數
+nextState 傳入下一個state 參數
+
+mount => render後把東西放到dom的動作
+
+componentWillUnmount() => 當一個component被unmount後會呼叫這個函數(因某些條件被清除)
+
+自訂property每次都需要綁定bind(this)原因=>當使用 extend React.Component 的方式去宣告元件的時候，React 確實會綁定 this 到元件內，但是卻有以下特定的地方才會被綁進去
+生命周期函式，例如 componentDidMount 等等 / render 內，其他自己定義的 property 就不會被綁入 this ，而且 this 會被指到 windows 這個全域上。
+解決方法 => 在constructor內綁定 =>
+
+constructor(props) {
+  super(props);
+  this.handleChange = this.handleChange.bind(this);
+}
+
+setState可傳入第二個參數為一個callback函數，可在完成state change後執行
+
+componentDidUpdate() => 會在更新後馬上被呼叫。這個方法並不會在初次 render 時被呼叫
+
+帶KEY屬性為了使性能提升
